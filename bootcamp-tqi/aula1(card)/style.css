@@ -1,0 +1,81 @@
+body {
+    font-family: sans-serif;
+
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card { /*Tudo isso será a imagem antes do hover*/
+    height: 400px;
+    width: 500px;
+    background-image: url('./lanscape.jpg');
+    background-position: center; /*A imagem estará centralizada*/
+    background-repeat: no-repeat; /*A imagem não irá se repetir*/
+    background-size: cover; /*Faz com que a imagem se adeque ao tamanho do height e do width*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5); /*Adiciona filtro de imagem mesmo*/
+    color: white;
+    cursor: pointer;
+    transition: 0.3s; /*transition permite definir o tempo da transição de estado entre dois elementos.*/
+}
+
+.card-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper h2 {
+    font-size: 40px;
+    text-transform: uppercase; /*Deixará tudo em letra maiúscula*/
+    letter-spacing: 4px;
+    margin: 0; /*Porque o h2 já vem com margem*/
+    transition: 0.3s;
+}
+
+.card-wrapper p {
+    opacity: 0;
+    font-size: 0;
+    visibility: hidden;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.card:hover {
+    filter: unset;
+}
+
+.card:hover > .card-wrapper::before {
+    height: 300px;
+    width: 400px;
+    opacity: 1;
+}
+
+.card:hover > .card-wrapper p{
+    opacity: 1;
+    visibility: visible;
+    font-size: 14px;
+}
